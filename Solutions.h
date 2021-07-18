@@ -14,6 +14,10 @@ public:
     // Link: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
     int removeDuplicates(vector<int>& nums);
 
+    // Problem 37 (Hard)
+    // Link: https://leetcode.com/problems/sudoku-solver/
+    void solveSudoku(vector<vector<char>>& board);
+
     // Helper functions
     // kth element: Find the kth elements in two vectors. The first index starts from 0
     int kthElement(vector<int> &nums1, vector<int> &nums2, int k);

@@ -31,7 +31,7 @@ class MySolutionTest : public CppUnit::TestFixture
             delete s;
         }
 
-        // Add test cases
+        // Test cases
         void test_case_4_common_vectors();
         void test_case_4_empty_nums1();
         void test_case_4_empty_nums2();
@@ -39,6 +39,7 @@ class MySolutionTest : public CppUnit::TestFixture
         void test_case_26_common_vectors();
         void test_case_26_empty_vector();
         
+        void test_case_37();
 
 };
 

@@ -17,3 +17,4 @@ leetcode_unit: $(OBJ)
 
 clean:
 	rm -f ./*.o *~ ./*~
+	rm leetcode_unit
