@@ -1,12 +1,12 @@
 # leetcode_unit
 
-This is a simple example to write you own C++ solutions for leetcode problems.
+This is a simple example to write you own C++ solutions for Leetcode problems.
 The propose of this example is for practice common algorithms with simple C++ source code -- Let's begin with Leetcode.
 
-If you are interested in leetcode and unit test, new solutions and tests for any problem in leetcode can be added by yourself with the help of the example.
+If you are interested in Leetcode and unit test, new solutions and tests for any problem in Leetcode can be added by yourself with the help of the example.
 
 There are some other better tools or plugins that are designed for Leetcode, such as *leetcode.vim*, *leetcode_cli* and *leetcode for vs code*.
-These tools also can help some to start to experience leetcode.
+These tools also can help some to start to experience Leetcode.
 
 # Pre-requisites
 
@@ -92,4 +92,4 @@ Other file name is also valid.
 
         }
 
-Now, you can start to practice leetcode.
+Now, you can start to practice Leetcode.

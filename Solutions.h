@@ -21,4 +21,9 @@ public:
     // Helper functions
     // kth element: Find the kth elements in two vectors. The first index starts from 0
     int kthElement(vector<int> &nums1, vector<int> &nums2, int k);
+
+    // The traverse helper to solve sudoku
+    bool sudoku_backtrack(vector< vector<char> > &board);
+    // Check whether c is a valid value
+    bool sudoku_isvalid(vector< vector<char> > &board, int i, int j, char c);
 };
