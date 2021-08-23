@@ -11,7 +11,7 @@ OBJ = $(patsubst %.cc, %.o, $(wildcard *.cc))
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 leetcode_unit: $(OBJ)
-	$(CC) -o $@ -l $(LIB) $^
+	$(CC) -o $@ $^ -l $(LIB)
 
 .PHONY: clean
 
