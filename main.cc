@@ -15,7 +15,7 @@ int main( int argc, char **argv)
     runner.addTest( registry.makeTest() );
     runner.run();
     
-    // Add unique codes to run specified test cases for one problem
+    // TODO: Add unique codes to run specified test cases for any problem
 
     return 0;
 }

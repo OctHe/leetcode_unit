@@ -3,7 +3,9 @@
 
 using namespace std;
 
-class Solution {
+class Solution 
+{
+
 public:
 
     // Problem 4 (Hard)
@@ -14,16 +16,23 @@ public:
     // Link: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
     int removeDuplicates(vector<int>& nums);
 
+    // Problem 36 (Middle)
+    // Link: https://leetcode.com/problems/valid-sudoku/
+    bool isValidSudoku(vector<vector<char>>& board);
+
     // Problem 37 (Hard)
     // Link: https://leetcode.com/problems/sudoku-solver/
     void solveSudoku(vector<vector<char>>& board);
 
-    // Helper functions
+    // ****************************************************************
+    //                          Helper functions
+    // ****************************************************************
     // kth element: Find the kth elements in two vectors. The first index starts from 0
     int kthElement(vector<int> &nums1, vector<int> &nums2, int k);
 
     // The traverse helper to solve sudoku
     bool sudoku_backtrack(vector< vector<char> > &board);
-    // Check whether c is a valid value
+    // Check whether c is a valid value in a sudoku
     bool sudoku_isvalid(vector< vector<char> > &board, int i, int j, char c);
+    
 };

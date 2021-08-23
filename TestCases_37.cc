@@ -32,10 +32,7 @@ void MySolutionTest::test_case_37_single_case()
     };
 
     s->solveSudoku(input_board);
-
-    for(unsigned i = 0; i < input_board.size(); i++)
-        for(unsigned j = 0; j < input_board[i].size(); j++)
-            CPPUNIT_ASSERT( input_board[i][j] == output_board[i][j] );
-
+    
+    CPPUNIT_ASSERT( input_board == output_board );
 }
 

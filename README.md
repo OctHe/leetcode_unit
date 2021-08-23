@@ -17,7 +17,7 @@ On Ubuntu, you can install them with
     
     sudo apt install make g++ libcppunit-dev
 
-# Download, compile and run it
+# Download, Compile, and Run It
 
     git clone https://github.com/OctHe/leetcode_unit
     cd leetcode_unit
@@ -26,11 +26,11 @@ On Ubuntu, you can install them with
 
  After running the program, you can find the results for unit tests.
 
-# Quick start to write the solutions and tests
+# Write Solutions and Tests
 
 The following content uses the [Problem 37](https://leetcode.com/problemset/all/?topicSlugs=array&difficulty=HARD) as an example.
 
-## Add a solution for a new problem
+## Add a Solution for a New Problem
 
 1. The header file that is related to a new solution is *Solution.h* file.
 Please add the statement of the solution in the *Solution.h* file:
@@ -61,7 +61,7 @@ Please add the statement of the solution in the *Solution.h* file:
 
 Until now, you can run make and a new *leetcode_unit* problem will be compiled (even if there is now solution has been added).
 
-## Add a test case for the problem
+## Add a Test Case for the Problem
 
 The header file related to unit test is *MyUnitTests.h* file. The unit test framework is *cppunit*
 

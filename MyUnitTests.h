@@ -18,6 +18,9 @@ class MySolutionTest : public CppUnit::TestFixture
         CPPUNIT_TEST( test_case_26_common_vectors );
         CPPUNIT_TEST( test_case_26_empty_vector );
 
+        CPPUNIT_TEST( test_case_36_true_case );
+        CPPUNIT_TEST( test_case_36_false_case );
+
         CPPUNIT_TEST( test_case_37_single_case );
 
         CPPUNIT_TEST_SUITE_END();
@@ -37,10 +40,13 @@ class MySolutionTest : public CppUnit::TestFixture
         void test_case_4_common_vectors();
         void test_case_4_empty_nums1();
         void test_case_4_empty_nums2();
-
+        
         void test_case_26_common_vectors();
         void test_case_26_empty_vector();
         
+        void test_case_36_true_case();
+        void test_case_36_false_case();
+
         void test_case_37_single_case();
 
 };
