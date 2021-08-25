@@ -23,6 +23,10 @@ class MySolutionTest : public CppUnit::TestFixture
 
         CPPUNIT_TEST( test_case_37_single_case );
 
+        CPPUNIT_TEST( test_case_53_common_vector );
+        CPPUNIT_TEST( test_case_53_one_element );
+        CPPUNIT_TEST( test_case_53_all_elements );
+
         CPPUNIT_TEST_SUITE_END();
 
     public:
@@ -48,6 +52,10 @@ class MySolutionTest : public CppUnit::TestFixture
         void test_case_36_false_case();
 
         void test_case_37_single_case();
+
+        void test_case_53_common_vector();
+        void test_case_53_one_element();
+        void test_case_53_all_elements();
 
 };
 
