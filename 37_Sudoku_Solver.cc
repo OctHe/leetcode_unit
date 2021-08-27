@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void Solution::solveSudoku(vector<vector<char>>& board)
+void Solution::solveSudoku(vector< vector<char> >& board)
 {
     sudoku_backtrack(board);
 }

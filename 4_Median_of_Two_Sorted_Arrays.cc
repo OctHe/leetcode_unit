@@ -7,7 +7,7 @@
 using namespace std;
 
 // The overall run time complexity should be O(log (m+n)) 
-double Solution:: findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) 
+double Solution::findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) 
 {
     
     int m = nums1.size();
@@ -18,7 +18,7 @@ double Solution:: findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2)
     int a = kthElement(nums1, nums2, (m+n) / 2 - 1);
     int b = kthElement(nums1, nums2, (m+n) / 2);
 
-    return (a + b) / 2.0 ;
+    return (a + b) / 2.0;
 }
 
 /*

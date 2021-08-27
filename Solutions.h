@@ -14,6 +14,11 @@ public:
     // Link: https://leetcode.com/problems/median-of-two-sorted-arrays/
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2);
 
+    // Problem 10 (Hard)
+    // Key words: Dynamic programming
+    // Link: https://leetcode.com/problems/regular-expression-matching/
+    bool isMatch(string s, string p);
+
     // Problem 26 (Easy)
     // Key words: Array
     // Link: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
