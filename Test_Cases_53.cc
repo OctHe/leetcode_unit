@@ -3,7 +3,7 @@
 
 #include "MyUnitTests.h"
 
-void MySolutionTest::test_case_53_common_vector()
+void test_problem_53_maxSubArray::test_case_53_common_vector()
 {
     vector<int> in_vec = {-2,1,-3,4,-1,2,1,-5,4};
 
@@ -13,7 +13,7 @@ void MySolutionTest::test_case_53_common_vector()
 
 }
 
-void MySolutionTest::test_case_53_one_element()
+void test_problem_53_maxSubArray::test_case_53_one_element()
 {
     vector<int> in_vec = {1};
 
@@ -23,7 +23,7 @@ void MySolutionTest::test_case_53_one_element()
 
 }
 
-void MySolutionTest::test_case_53_all_elements()
+void test_problem_53_maxSubArray::test_case_53_all_elements()
 {
     vector<int> in_vec = {5,4,-1,7,8};
 

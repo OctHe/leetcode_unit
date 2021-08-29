@@ -42,9 +42,11 @@ public:
     // ****************************************************************
     //                          Helper functions
     // ****************************************************************
+    // Problem 4 (Hard)
     // kth element: Find the kth elements in two vectors. The first index starts from 0
     int kthElement(vector<int> &nums1, vector<int> &nums2, int k);
 
+    // Problem 37 (Hard)
     // The traverse helper to solve sudoku
     bool sudoku_backtrack(vector< vector<char> > &board);
     // Check whether c is a valid value in a sudoku

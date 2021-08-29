@@ -3,7 +3,7 @@
 
 #include "MyUnitTests.h"
 
-void MySolutionTest::test_case_4_common_vectors()
+void test_problem_4_findMedianSortedArrays::test_case_4_common_vectors()
 {
     vector< vector<int> > nums1 = {{1,3}, {1, 2}};
     vector< vector<int> > nums2 = {{2}, {3, 4}};
@@ -14,7 +14,7 @@ void MySolutionTest::test_case_4_common_vectors()
         CPPUNIT_ASSERT_DOUBLES_EQUAL(res[i], s->findMedianSortedArrays(nums1[i], nums2[i]), 0.01);
 }
 
-void MySolutionTest::test_case_4_empty_nums1()
+void test_problem_4_findMedianSortedArrays::test_case_4_empty_nums1()
 {
     vector<int> nums1 = {};
     vector<int> nums2 = {1};
@@ -24,7 +24,7 @@ void MySolutionTest::test_case_4_empty_nums1()
     CPPUNIT_ASSERT_DOUBLES_EQUAL(res, s->findMedianSortedArrays(nums1, nums2), 0.01);
 }
 
-void MySolutionTest::test_case_4_empty_nums2()
+void test_problem_4_findMedianSortedArrays::test_case_4_empty_nums2()
 {
     vector<int> nums1 = {2};
     vector<int> nums2 = {};

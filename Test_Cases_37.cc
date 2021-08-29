@@ -3,7 +3,7 @@
 
 #include "MyUnitTests.h"
 
-void MySolutionTest::test_case_37_single_case()
+void test_problem_37_solveSudoku::test_case_37_single_array()
 {
     vector< vector<char> > input_board = 
     {
