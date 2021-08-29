@@ -1,21 +1,25 @@
 # leetcode_unit
 
-This is a simple example to write you own C++ solutions for Leetcode problems.
-The propose of this example is for practice common algorithms with simple C++ source code -- Let's begin with Leetcode.
+This is a terminal tool for effeciently practice the problems in [Leetcode](https://leetcode.com/).
 
-If you are interested in Leetcode and unit test, new solutions and tests for any problem in Leetcode can be added by yourself with the help of the example.
+leetcode_unit is lightweight so that it does not need extra libraries except cppunit.
+It also can works locally without network connection.
+On the other hand, if you are interested in algorithm and unit test, new solutions and tests for any problem in Leetcode can be added by yourself with the help of the example.
 
-There are some other better tools or plugins that are designed for Leetcode, such as *leetcode.vim*, *leetcode_cli* and *leetcode for vs code*.
-These tools also can help some to start to experience Leetcode.
+# Support Platform
 
-# Pre-requisites
+It has been tested on Ubuntu 20.04 and Windows subsystems for Linux (WSL) v2.
 
-It has been tested on ubuntu 20.04 with make (>=4.2.1) and g++(8.3.0).
-It also requires cppunit (>=1.14.0) to add the unit test.
+On Ubuntu 20.04 system, you need to install
+1. make (>=4.2.1) and g++(8.3.0)
+2. cppunit (>=1.14.0)
 
-On Ubuntu, you can install them with
+you can install them using *apt*
     
     sudo apt install make g++ libcppunit-dev
+
+On WSL v2, you also must install Ubuntu 20.04 version.
+Besides the above tools and libraries, it is better to install *vscode*.
 
 # Download, Compile, and Run It
 
@@ -24,13 +28,11 @@ On Ubuntu, you can install them with
     make
     ./leetcode_test
 
- After running the program, you can find the results for unit tests.
+ After running the program, the terminal will display the results of unit tests.
 
-# Write Solutions and Tests
+# Add New Problems and Solutions 
 
 The following content uses the [Problem 37](https://leetcode.com/problemset/all/?topicSlugs=array&difficulty=HARD) as an example.
-
-## Add a Solution for a New Problem
 
 1. The header file that is related to a new solution is *Solution.h* file.
 Please add the statement of the solution in the *Solution.h* file:
@@ -61,35 +63,80 @@ Please add the statement of the solution in the *Solution.h* file:
 
 Until now, you can run make and a new *leetcode_unit* problem will be compiled (even if there is now solution has been added).
 
-## Add a Test Case for the Problem
+# Add Test Cases for the Solution
 
 The header file related to unit test is *MyUnitTests.h* file. The unit test framework is *cppunit*
 
-1. First, open *MyUnitTest.h* file and add a new test case
+1. First, open *MyUnitTest.h* file and add a new test fixture
 
-        void test_case_37();
+        class test_problem_37_solveSudoku : public CppUnit::TestFixture  
+        {
+        private:
+                Solution *s;
 
+                CPPUNIT_TEST_SUITE( test_problem_37_solveSudoku );
 
-2. If you want to run the test case, add a *CPPUNIT_TEST* Macro between the Macros *CPPUNIT_TEST_SUITE* and *CPPUNIT_TEST_SUITE_END()*, i.e.,
+                // Add unit tests into the suite
+                CPPUNIT_TEST( test_case_37_single_array );
 
-        CPPUNIT_TEST( void test_case_37() );
+                CPPUNIT_TEST_SUITE_END();
 
-3. Create a source file for the new test cases:
+        public:
+                void setUp() { s = new Solution(); }
+                void tearDown() { delete s; }
 
-    gvim TestCases_37.cc
+                // Test cases
+                void test_case_37_single_array();
+        };
+
+2. Create a source file for the new test cases (with vim, gvim, vscode or other editors):
+
+    vim Test_Cases_37.cc
     
 Other file name is also valid.
 
-4. Copy the following code into the new source file
+3. Copy the following code into the new source file
 
         #include <cppunit/TestFixture.h>
         #include <cppunit/extensions/HelperMacros.h>
 
         #include "MyUnitTests.h"
 
-        void MySolutionTest::test_case_37()
+        void test_problem_37_solveSudoku::test_case_37_single_array()
         {
+        vector< vector<char> > input_board = 
+        {
+                {'5','3','.','.','7','.','.','.','.'},
+                {'6','.','.','1','9','5','.','.','.'},
+                {'.','9','8','.','.','.','.','6','.'},
+                {'8','.','.','.','6','.','.','.','3'},
+                {'4','.','.','8','.','3','.','.','1'},
+                {'7','.','.','.','2','.','.','.','6'},
+                {'.','6','.','.','.','.','2','8','.'},
+                {'.','.','.','4','1','9','.','.','5'},
+                {'.','.','.','.','8','.','.','7','9'}
+        };
 
+        vector< vector<char> > output_board = 
+        {
+                {'5','3','4','6','7','8','9','1','2'},
+                {'6','7','2','1','9','5','3','4','8'},
+                {'1','9','8','3','4','2','5','6','7'},
+                {'8','5','9','7','6','1','4','2','3'},
+                {'4','2','6','8','5','3','7','9','1'},
+                {'7','1','3','9','2','4','8','5','6'},
+                {'9','6','1','5','3','7','2','8','4'},
+                {'2','8','7','4','1','9','6','3','5'},
+                {'3','4','5','2','8','6','1','7','9'}
+        };
+
+        s->solveSudoku(input_board);
+        
+        CPPUNIT_ASSERT( input_board == output_board );
         }
 
-Now, you can start to practice Leetcode.
+4. Finally, do not forget add the following code in *main.cc* to register the new test fixture.
+
+        CPPUNIT_TEST_SUITE_REGISTRATION( test_problem_37_solveSudoku );
+
+Now, you can start to design your own solutions for this new problem.
