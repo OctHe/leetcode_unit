@@ -1,12 +1,13 @@
 # leetcode_unit
 
-This is a terminal tool for effeciently practice the problems in [Leetcode](https://leetcode.com/).
+This is a terminal tool for effeciently practice the problems in [Leetcode](https://leetcode.com/) with C/C++.
+The goal of leetcode_unit is to integrate all solutions and all problems in Leetcode into one program (i.e., leetcode).
 
 leetcode_unit is lightweight so that it does not need extra libraries except cppunit.
 It also can works locally without network connection.
 On the other hand, if you are interested in algorithm and unit test, new solutions and tests for any problem in Leetcode can be added by yourself with the help of the example.
 
-# Support Platform
+## Support Platform
 
 It has been tested on Ubuntu 20.04 and Windows subsystems for Linux (WSL) v2.
 
@@ -21,16 +22,18 @@ you can install them using *apt*
 On WSL v2, you also must install Ubuntu 20.04 version.
 Besides the above tools and libraries, it is better to install *vscode*.
 
-# Download, Compile, and Run It
+Ideally, leetcode_unit can be easily compiled at other Linux platforms.
+
+## Install and Test
 
     git clone https://github.com/OctHe/leetcode_unit
     cd leetcode_unit
     make
-    ./leetcode_test
+    ./leetcode_unit
 
  After running the program, the terminal will display the results of unit tests.
 
-# Add New Problems and Solutions 
+## Add New Problems and Solutions 
 
 The following content uses the [Problem 37](https://leetcode.com/problemset/all/?topicSlugs=array&difficulty=HARD) as an example.
 
@@ -63,23 +66,16 @@ Please add the statement of the solution in the *Solution.h* file:
 
 Until now, you can run make and a new *leetcode_unit* problem will be compiled (even if there is now solution has been added).
 
-# Add Test Cases for the Solution
+## Add Test Cases for the Solution
 
-The header file related to unit test is *MyUnitTests.h* file. The unit test framework is *cppunit*
+The header file related to unit test is *MyTestCases.h* file. The unit test framework is *cppunit*
 
-1. First, open *MyUnitTest.h* file and add a new test fixture
+1. First, open *MyTestCases.h* file and add a new test fixture
 
         class test_problem_37_solveSudoku : public CppUnit::TestFixture  
         {
         private:
                 Solution *s;
-
-                CPPUNIT_TEST_SUITE( test_problem_37_solveSudoku );
-
-                // Add unit tests into the suite
-                CPPUNIT_TEST( test_case_37_single_array );
-
-                CPPUNIT_TEST_SUITE_END();
 
         public:
                 void setUp() { s = new Solution(); }
@@ -87,6 +83,16 @@ The header file related to unit test is *MyUnitTests.h* file. The unit test fram
 
                 // Test cases
                 void test_case_37_single_array();
+
+                // Test Suite
+                static CppUnit::Test *suite()
+                {
+                CppUnit::TestSuite *suiteOfTests = new CppUnit::TestSuite( "test_Problem_37" );
+                suiteOfTests->addTest( new CppUnit::TestCaller<test_problem_37_solveSudoku>( 
+                                                "test_single_array", 
+                                                &test_problem_37_solveSudoku::test_case_37_single_array ) );
+                return suiteOfTests;
+                }
         };
 
 2. Create a source file for the new test cases (with vim, gvim, vscode or other editors):
@@ -100,7 +106,7 @@ Other file name is also valid.
         #include <cppunit/TestFixture.h>
         #include <cppunit/extensions/HelperMacros.h>
 
-        #include "MyUnitTests.h"
+        #include "MyTestCases.h"
 
         void test_problem_37_solveSudoku::test_case_37_single_array()
         {
@@ -135,8 +141,8 @@ Other file name is also valid.
         CPPUNIT_ASSERT( input_board == output_board );
         }
 
-4. Finally, do not forget add the following code in *main.cc* to register the new test fixture.
+4. Finally, do not forget add the following code in *MyUnitTests.h* to register the new test fixture.
 
         CPPUNIT_TEST_SUITE_REGISTRATION( test_problem_37_solveSudoku );
 
-Now, you can start to design your own solutions for this new problem.
+Now, you can start to design your own solution for this new problem.

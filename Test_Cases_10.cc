@@ -1,6 +1,6 @@
-#include "MyUnitTests.h"
+#include "MyTestCases.h"
 
-void test_problem_10_isMatch::test_case_10_complicate_case()
+void test_problem_10_isMatch::test_case_10_complicate_cases()
 {
     CPPUNIT_ASSERT( s->isMatch("aab", "c*a*b") == true );
     CPPUNIT_ASSERT( s->isMatch("aaa", "ab*a*c*a") == true );
@@ -16,12 +16,12 @@ void test_problem_10_isMatch::test_case_10_repeat_zero_time()
     CPPUNIT_ASSERT( s->isMatch("aaa", "ab*ac*a") == true );
 }
 
-void test_problem_10_isMatch::test_case_10_repeat_one_time_true_case()
+void test_problem_10_isMatch::test_case_10_repeat_one_time()
 {
     CPPUNIT_ASSERT( s->isMatch("aa", "a*") == true );
 }
 
-void test_problem_10_isMatch::test_case_10_dot_case()
+void test_problem_10_isMatch::test_case_10_dot_cases()
 {
     CPPUNIT_ASSERT( s->isMatch("a", ".*") == true );
     CPPUNIT_ASSERT( s->isMatch("ab", ".*") == true );

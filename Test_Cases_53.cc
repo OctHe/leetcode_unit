@@ -1,7 +1,4 @@
-#include <cppunit/TestFixture.h>
-#include <cppunit/extensions/HelperMacros.h>
-
-#include "MyUnitTests.h"
+#include "MyTestCases.h"
 
 void test_problem_53_maxSubArray::test_case_53_common_vector()
 {

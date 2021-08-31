@@ -1,7 +1,4 @@
-#include <cppunit/TestFixture.h>
-#include <cppunit/extensions/HelperMacros.h>
-
-#include "MyUnitTests.h"
+#include "MyTestCases.h"
 
 void test_problem_26_removeDuplicates::test_case_26_common_vectors()
 {

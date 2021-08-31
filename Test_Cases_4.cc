@@ -1,7 +1,4 @@
-#include <cppunit/TestFixture.h>
-#include <cppunit/extensions/HelperMacros.h>
-
-#include "MyUnitTests.h"
+#include "MyTestCases.h"
 
 void test_problem_4_findMedianSortedArrays::test_case_4_common_vectors()
 {
