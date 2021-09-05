@@ -9,11 +9,13 @@ typedef map<unsigned, CppUnit::Test *(*)(void)> test_suite_map;
 static test_suite_map suites = 
 {
     {4, test_problem_4_findMedianSortedArrays::suite},
+    {6, test_problem_6_convert::suite},
     {10, test_problem_10_isMatch::suite},
     {26, test_problem_26_removeDuplicates::suite},
     {36, test_problem_36_isValidSudoku::suite},
     {37, test_problem_37_solveSudoku::suite},
     {53, test_problem_53_maxSubArray::suite},
+    {494, test_problem_494_findTargetSumWays::suite},
 };
 
 void usage()

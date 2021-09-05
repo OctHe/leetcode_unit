@@ -3,8 +3,7 @@ CFLAGS = -I.
 LIB = cppunit
 
 DEPS = Solutions.h \
-		MyTestCases.h \
-	   MyUnitTests.h
+		MyTestCases.h
 
 OBJ = $(patsubst %.cc, %.o, $(wildcard *.cc))
 

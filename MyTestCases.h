@@ -34,6 +34,30 @@ class test_problem_4_findMedianSortedArrays : public CppUnit::TestFixture
         }
 };
 
+class test_problem_6_convert : public CppUnit::TestFixture  
+{
+    private:
+        Solution *s;
+
+    public:
+        void setUp() { s = new Solution(); }
+        void tearDown() { delete s; }
+
+        // Test cases
+        void test_case_6_common_strings();
+
+        // Test Suite
+        static CppUnit::Test *suite()
+        {
+            CppUnit::TestSuite *suiteOfTests = new CppUnit::TestSuite( "test_Problem_6" );
+            suiteOfTests->addTest( new CppUnit::TestCaller<test_problem_6_convert>( 
+                                        "test_common_strings", 
+                                        &test_problem_6_convert::test_case_6_common_strings ) );
+
+            return suiteOfTests;
+        }
+};
+
 class test_problem_10_isMatch : public CppUnit::TestFixture  
 {
     private:
@@ -170,6 +194,30 @@ class test_problem_53_maxSubArray : public CppUnit::TestFixture
             suiteOfTests->addTest( new CppUnit::TestCaller<test_problem_53_maxSubArray>( 
                                         "test_all_elements", 
                                         &test_problem_53_maxSubArray::test_case_53_all_elements ) );
+            return suiteOfTests;
+        }
+};
+
+class test_problem_494_findTargetSumWays : public CppUnit::TestFixture  
+{
+    private:
+        Solution *s;
+
+    public:
+        void setUp() { s = new Solution(); }
+        void tearDown() { delete s; }
+
+        // Test cases
+        void test_case_494();
+
+        // Test Suite
+        static CppUnit::Test *suite()
+        {
+            CppUnit::TestSuite *suiteOfTests = new CppUnit::TestSuite( "test_Problem_494" );
+            suiteOfTests->addTest( new CppUnit::TestCaller<test_problem_494_findTargetSumWays>( 
+                                        "test_common_vectors", 
+                                        &test_problem_494_findTargetSumWays::test_case_494 ) );
+
             return suiteOfTests;
         }
 };

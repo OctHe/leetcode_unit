@@ -1,15 +1,15 @@
 # leetcode_unit
 
 This is a terminal tool for effeciently practice the problems in [Leetcode](https://leetcode.com/) with C/C++.
-The goal of leetcode_unit is to integrate all solutions and all problems in Leetcode into one program (i.e., leetcode).
+The goal of leetcode_unit is to integrate all solutions and all problems in Leetcode into one program (i.e., leetcode_unit).
 
-leetcode_unit is lightweight so that it does not need extra libraries except cppunit.
+leetcode_unit is lightweight so that it does not require extra libraries except cppunit.
 It also can works locally without network connection.
 On the other hand, if you are interested in algorithm and unit test, new solutions and tests for any problem in Leetcode can be added by yourself with the help of the example.
 
 ## Support Platform
 
-It has been tested on Ubuntu 20.04 and Windows subsystems for Linux (WSL) v2.
+It has been tested on Ubuntu 20.04 and Windows Subsystem for Linux (WSL) v2.
 
 On Ubuntu 20.04 system, you need to install
 1. make (>=4.2.1) and g++(8.3.0)
@@ -141,8 +141,8 @@ Other file name is also valid.
         CPPUNIT_ASSERT( input_board == output_board );
         }
 
-4. Finally, do not forget add the following code in *MyUnitTests.h* to register the new test fixture.
+4. Finally, do not forget add the following code in *main.cc* to add the new test fixture into test_suite_map.
 
-        CPPUNIT_TEST_SUITE_REGISTRATION( test_problem_37_solveSudoku );
+        {37, test_problem_37_solveSudoku::suite},
 
 Now, you can start to design your own solution for this new problem.

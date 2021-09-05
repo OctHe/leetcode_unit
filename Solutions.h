@@ -14,6 +14,11 @@ public:
     // Link: https://leetcode.com/problems/median-of-two-sorted-arrays/
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2);
 
+    // Problem 6 (Medium)
+    // Key words: String
+    // Link: https://leetcode.com/problems/zigzag-conversion/
+    string convert(string s, int numRows);
+
     // Problem 10 (Hard)
     // Key words: Dynamic programming
     // Link: https://leetcode.com/problems/regular-expression-matching/
@@ -39,6 +44,11 @@ public:
     // Link: https://leetcode.com/problems/maximum-subarray/
     int maxSubArray(vector<int>& nums);
 
+    // Problem 494 (Medium)
+    // Key words: Binary tree
+    // Link: https://leetcode.com/problems/target-sum/
+    int findTargetSumWays(vector<int>& nums, int target);
+
     // ****************************************************************
     //                          Helper functions
     // ****************************************************************
@@ -52,4 +62,5 @@ public:
     // Check whether c is a valid value in a sudoku
     bool sudoku_isvalid(vector< vector<char> > &board, int i, int j, char c);
     
+
 };
