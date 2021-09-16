@@ -12,7 +12,7 @@ On the other hand, if you are interested in algorithm and unit test, new solutio
 It has been tested on Ubuntu 20.04 and Windows Subsystem for Linux (WSL) v2.
 
 On Ubuntu 20.04 system, you need to install
-1. make (>=4.2.1) and g++(8.3.0)
+1. make (>=4.2.1) and g++(>=8.3.0)
 2. cppunit (>=1.14.0)
 
 you can install them using *apt*
@@ -24,125 +24,117 @@ Besides the above tools and libraries, it is better to install *vscode*.
 
 Ideally, leetcode_unit can be easily compiled at other Linux platforms.
 
-## Install and Test
+## Download leetcode_unit
 
     git clone https://github.com/OctHe/leetcode_unit
     cd leetcode_unit
-    make
-    ./leetcode_unit
 
- After running the program, the terminal will display the results of unit tests.
 
-## Add New Problems and Solutions 
+## Add New Problem
 
-The following content uses the [Problem 37](https://leetcode.com/problemset/all/?topicSlugs=array&difficulty=HARD) as an example.
+The following content uses the [Problem 36](https://leetcode.com/problems/valid-sudoku/) as an example.
 
-1. The header file that is related to a new solution is *Solution.h* file.
-Please add the statement of the solution in the *Solution.h* file:
-    
-        void solveSudoku(vector<vector<char>>& board);
+The program is a python program named as *leetcode_unit.py*.
+To add a new problem, you can directly run the following command
 
-2. Add a new source code file. The name of the source file can be others if you like, but in this example, the new file is created as *37_Sudoku_Solver.cc* by using gvim:
+    ./leetcode_unit add -i 36 -n Valid_Sudoku
+where *-i* is the index of the problem and *-n* is its name.
 
-        gvim 37_Sudoku_Solver.cc
+After running the command, a new directory will be created in the *./problems/* directory like this:
 
-3. Add the following content in the 37_Sudoku_Solver.cc file
+.   
+├── problems    
+│   ├── 36_Valid_Sudoku     
+│   │   ├── 36_Valid_Sudoku.h   
+│   │   └── Test_Cases_36.cc    
 
-        /*
-         * Link: https://leetcode.com/problems/sudoku-solver/
-         */
+Until now, you can add your own solution to this new problem.
 
-        #include <iostream>
-        #include <vector>
+## Add Solution
 
-        #include "Solutions.h"
+*36_Valid_Sudoku.h* contains the Solution class. Open it with a editor, you need to replace the following:
 
-        using namespace std;
 
-        void Solution::solveSudoku(vector<vector<char>>& board)
+    <return_type> <function>
+    {
+
+    }
+
+by your solution, such as:
+
+
+    bool isValidSudoku(vector<vector<char>>& board) 
+    {
+
+        vector< unordered_set<char> > rows(9, unordered_set<char>());
+        vector< unordered_set<char> > columns(9, unordered_set<char>());
+        vector< unordered_set<char> > boxes(9, unordered_set<char>());
+
+        for(unsigned i = 0; i < board.size(); i++)
+        for(unsigned j = 0; j < board[i].size(); j++)
         {
-            // Add the solution below
+            if(board[i][j] == '.') continue;
+
+            if( rows[i].find(board[i][j]) != rows[i].end()) return false;
+
+            if( columns[j].find(board[i][j]) != columns[j].end() ) return false;
+
+            if( boxes[(i/3)*3+j/3].find(board[i][j]) != boxes[(i/3)*3+j/3].end()) return false;
+
+            rows[i].insert(board[i][j]);
+            columns[j].insert(board[i][j]);
+            boxes[(i/3)*3+j/3].insert(board[i][j]);
+
         }
 
-Until now, you can run make and a new *leetcode_unit* problem will be compiled (even if there is now solution has been added).
+        return true;
+    }
 
-## Add Test Cases for the Solution
+Now, you can compile it with *g++* complier
 
-The header file related to unit test is *MyTestCases.h* file. The unit test framework is *cppunit*
+    cd programs/36_Valid_Sudoku
+    g++ -o Test_Cases_36 Test_Cases_36.cc -l cppunit
 
-1. First, open *MyTestCases.h* file and add a new test fixture
+## Add Test Cases
 
-        class test_problem_37_solveSudoku : public CppUnit::TestFixture  
-        {
-        private:
-                Solution *s;
+Test cases for [Problem 36](https://leetcode.com/problems/valid-sudoku/) can be saved in file *Test_Cases_10.cc*.
+The following code can be added in *test_problem_36*function
 
-        public:
-                void setUp() { s = new Solution(); }
-                void tearDown() { delete s; }
+    vector< vector<char> > true_input_board = 
+    {
+        {'5','3','.','.','7','.','.','.','.'},
+        {'6','.','.','1','9','5','.','.','.'},
+        {'.','9','8','.','.','.','.','6','.'},
+        {'8','.','.','.','6','.','.','.','3'},
+        {'4','.','.','8','.','3','.','.','1'},
+        {'7','.','.','.','2','.','.','.','6'},
+        {'.','6','.','.','.','.','2','8','.'},
+        {'.','.','.','4','1','9','.','.','5'},
+        {'.','.','.','.','8','.','.','7','9'}
+    };
 
-                // Test cases
-                void test_case_37_single_array();
+    vector< vector<char> > false_input_board = 
+    {
+        {'8','3','.','.','7','.','.','.','.'},
+        {'6','.','.','1','9','5','.','.','.'},
+        {'.','9','8','.','.','.','.','6','.'},
+        {'8','.','.','.','6','.','.','.','3'},
+        {'4','.','.','8','.','3','.','.','1'},
+        {'7','.','.','.','2','.','.','.','6'},
+        {'.','6','.','.','.','.','2','8','.'},
+        {'.','.','.','4','1','9','.','.','5'},
+        {'.','.','.','.','8','.','.','7','9'}
+    };
 
-                // Test Suite
-                static CppUnit::Test *suite()
-                {
-                CppUnit::TestSuite *suiteOfTests = new CppUnit::TestSuite( "test_Problem_37" );
-                suiteOfTests->addTest( new CppUnit::TestCaller<test_problem_37_solveSudoku>( 
-                                                "test_single_array", 
-                                                &test_problem_37_solveSudoku::test_case_37_single_array ) );
-                return suiteOfTests;
-                }
-        };
+    CPPUNIT_ASSERT( s->isValidSudoku(true_input_board) == true );
+    CPPUNIT_ASSERT( s->isValidSudoku(false_input_board) == false );
 
-2. Create a source file for the new test cases (with vim, gvim, vscode or other editors):
+Compile and run it with
 
-    vim Test_Cases_37.cc
-    
-Other file name is also valid.
+    g++ -o Test_Cases_36 Test_Cases_36.cc -l cppunit
+    ./Test_Cases.36
 
-3. Copy the following code into the new source file
+If your solution is correct, you can see the output
 
-        #include <cppunit/TestFixture.h>
-        #include <cppunit/extensions/HelperMacros.h>
 
-        #include "MyTestCases.h"
-
-        void test_problem_37_solveSudoku::test_case_37_single_array()
-        {
-        vector< vector<char> > input_board = 
-        {
-                {'5','3','.','.','7','.','.','.','.'},
-                {'6','.','.','1','9','5','.','.','.'},
-                {'.','9','8','.','.','.','.','6','.'},
-                {'8','.','.','.','6','.','.','.','3'},
-                {'4','.','.','8','.','3','.','.','1'},
-                {'7','.','.','.','2','.','.','.','6'},
-                {'.','6','.','.','.','.','2','8','.'},
-                {'.','.','.','4','1','9','.','.','5'},
-                {'.','.','.','.','8','.','.','7','9'}
-        };
-
-        vector< vector<char> > output_board = 
-        {
-                {'5','3','4','6','7','8','9','1','2'},
-                {'6','7','2','1','9','5','3','4','8'},
-                {'1','9','8','3','4','2','5','6','7'},
-                {'8','5','9','7','6','1','4','2','3'},
-                {'4','2','6','8','5','3','7','9','1'},
-                {'7','1','3','9','2','4','8','5','6'},
-                {'9','6','1','5','3','7','2','8','4'},
-                {'2','8','7','4','1','9','6','3','5'},
-                {'3','4','5','2','8','6','1','7','9'}
-        };
-
-        s->solveSudoku(input_board);
-        
-        CPPUNIT_ASSERT( input_board == output_board );
-        }
-
-4. Finally, do not forget add the following code in *main.cc* to add the new test fixture into test_suite_map.
-
-        {37, test_problem_37_solveSudoku::suite},
-
-Now, you can start to design your own solution for this new problem.
+    OK (1 tests)
