@@ -1,0 +1,100 @@
+import os
+from string import Template
+
+from pylcu import file_format
+
+default_templates_path = './templates/'
+default_problems_path = './problems/'
+
+default_problem_temp = 'temp_problem.h'
+default_test_temp = 'temp_unit_test.cc'
+
+problem_dir_temp = Template('${index}_${problem}/')
+header_file_temp = Template('${index}_${problem}.h')
+source_file_temp = Template('Test_Cases_${index}.cc')
+exe_file_temp = Template('Test_Cases_${index}')
+
+CC = 'g++'
+LIB = 'cppunit'
+
+def get_problem_dict():
+    prob_dict = {}
+    for problem in os.listdir(default_problems_path):
+        prob_list = problem.split('_', 1)
+        prob_dict[int(prob_list[0])] = prob_list[1]
+
+    return prob_dict
+
+def get_problem_states(problem_id):
+
+    prob_dict = get_problem_dict()
+
+    if problem_id in prob_dict:
+        return True
+
+    else:
+        return False
+
+def lcu_add(args):
+
+    if get_problem_states(args.id):
+        print('Problem exist!')
+
+    problem_path = default_problems_path + problem_dir_temp.substitute(index=args.id, problem=args.name)
+    problem_file = problem_path + header_file_temp.substitute(index=args.id, problem=args.name)
+    test_file = problem_path + source_file_temp.substitute(index=args.id, problem=args.name)
+
+    # Create a new directory
+    os.makedirs(problem_path)
+
+    # Read template files
+    with open(default_templates_path + default_problem_temp, 'r') as f:
+        problem_template = Template(f.read())
+    with open(default_templates_path + default_test_temp, 'r') as f:
+        test_template = Template(f.read())
+
+    # Write new files
+    with open(problem_file, 'w') as f:
+        f.write(problem_template.substitute(index=args.id, problem=args.name))
+    with open(test_file, 'w') as f:
+        f.write(test_template.substitute(index=args.id, problem=args.name))
+
+
+def lcu_list(args):
+    prob_dict = get_problem_dict()
+
+    print('ID\t', 'Name')
+    for prob_id in prob_dict.keys():
+        print(prob_id, '\t', prob_dict[prob_id])
+
+def lcu_run(args):
+
+    prob_dict = get_problem_dict()
+
+    target_id = int(args.id)
+
+    try:
+        target_problem = prob_dict[target_id]
+
+        problem_path = default_problems_path + problem_dir_temp.substitute(index=target_id, problem=target_problem)
+        input_file = problem_path + source_file_temp.substitute(index=target_id, problem=target_problem)
+
+        output_file = problem_path + exe_file_temp.substitute(index=target_id) 
+
+
+    except KeyError:
+        print('The ID is not added!')
+        
+        prob_dict = get_problem_dict()
+        print('Please input the correct ID: ', [prob_id for prob_id in prob_dict.keys()])
+
+    compile_problem = CC + ' -o ' + output_file + ' ' + input_file + ' -l ' + LIB
+    run_problem = output_file
+    delete_output_file = 'rm ' + output_file
+
+    os.system(compile_problem)
+    os.system(run_problem)
+    os.system(delete_output_file)
+
+def lcu_delete(args):
+    print('delete')

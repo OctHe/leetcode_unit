@@ -1,17 +1,15 @@
 # leetcode_unit
 
-This is a terminal tool for effeciently practice the problems in [Leetcode](https://leetcode.com/) with C/C++.
-The goal of leetcode_unit is to integrate all solutions and all problems in Leetcode into one program (i.e., leetcode_unit).
+Customized test cases is also important in [Leetcode](https://leetcode.com/).
 
-leetcode_unit is lightweight so that it does not require extra libraries except cppunit.
-It also can works locally without network connection.
-On the other hand, if you are interested in algorithm and unit test, new solutions and tests for any problem in Leetcode can be added by yourself with the help of the example.
+*leetcode_unit* is a lightweight and offline tool to generate solutions and test cases for the problems in [Leetcode](https://leetcode.com/).
 
 ## Support Platform
 
 It has been tested on Ubuntu 20.04 and Windows Subsystem for Linux (WSL) v2.
 
 On Ubuntu 20.04 system, you need to install
+1. python 3
 1. make (>=4.2.1) and g++(>=8.3.0)
 2. cppunit (>=1.14.0)
 
@@ -22,7 +20,7 @@ you can install them using *apt*
 On WSL v2, you also must install Ubuntu 20.04 version.
 Besides the above tools and libraries, it is better to install *vscode*.
 
-Ideally, leetcode_unit can be easily compiled at other Linux platforms.
+Ideally, leetcode_unit can be used at other Linux platforms.
 
 ## Download leetcode_unit
 
@@ -42,11 +40,11 @@ where *-i* is the index of the problem and *-n* is its name.
 
 After running the command, a new directory will be created in the *./problems/* directory like this:
 
-.   
-├── problems    
-│   ├── 36_Valid_Sudoku     
-│   │   ├── 36_Valid_Sudoku.h   
-│   │   └── Test_Cases_36.cc    
+    .   
+    ├── problems    
+    │   ├── 36_Valid_Sudoku     
+    │   │   ├── 36_Valid_Sudoku.h   
+    │   │   └── Test_Cases_36.cc    
 
 Until now, you can add your own solution to this new problem.
 

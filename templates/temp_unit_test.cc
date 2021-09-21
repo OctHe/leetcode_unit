@@ -15,6 +15,5 @@ int main( int argc, char **argv)
     runner.addTest( registry.makeTest() );
     runner.run();
 
-
     return 0;
 }
