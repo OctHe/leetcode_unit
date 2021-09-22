@@ -2,7 +2,7 @@
 
 void test_problem_${index}::test_case_${index}()
 {
-
+    // A simple assert: CPPUNIT_ASSERT
 }
 
 CPPUNIT_TEST_SUITE_REGISTRATION(test_problem_${index});
