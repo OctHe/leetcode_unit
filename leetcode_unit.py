@@ -6,7 +6,7 @@
 import sys
 import argparse
 
-from pylcu import cmd
+from lcupy import cmd
 
 if __name__ == '__main__':
    

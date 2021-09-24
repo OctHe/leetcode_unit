@@ -1,5 +1,5 @@
 from string import Template
-from pylcu import info
+from . import info
 
 problem_dir_temp = Template('${index}_${problem}/')
 header_file_temp = Template('${index}_${problem}.h')

@@ -1,7 +1,7 @@
 import os
 
-from pylcu import file_format
-from pylcu import info
+from . import file_format
+from . import info
 
 CC = 'g++'
 LIB = 'cppunit'
