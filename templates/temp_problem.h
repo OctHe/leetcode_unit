@@ -1,5 +1,5 @@
 /*
- * Problem ${index} (Easy/Medium/Hard)
+ * Problem ${index}: Easy/Medium/Hard
  * Key words:
  * Link: 
  */
