@@ -88,10 +88,21 @@ by your solution, such as:
         return true;
     }
 
-Now, you can compile it with *g++* complier
+## Run Solution
 
-    cd programs/36_Valid_Sudoku
-    g++ -o Test_Cases_36 Test_Cases_36.cc -l cppunit
+leetcode_unit provides a command to run the solution.
+
+    ./leetcode_unit.py run -i 36
+
+This command will automatically compile (for C and C++) and run the program of [Problem 36](https://leetcode.com/problems/valid-sudoku/).
+
+
+If the program has no error, you can see the output
+
+
+    OK (1 tests)
+
+Note that the results will be always OK because test cases have not been added.
 
 ## Add Test Cases
 
@@ -129,10 +140,5 @@ The following code can be added in *test_problem_36*function
 
 Compile and run it with
 
-    g++ -o Test_Cases_36 Test_Cases_36.cc -l cppunit
-    ./Test_Cases.36
+    ./leetcode_unit.py run -i 36
 
-If your solution is correct, you can see the output
-
-
-    OK (1 tests)
