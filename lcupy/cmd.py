@@ -30,11 +30,12 @@ def lcu_add(args):
 
 def lcu_list(args):
 
+    print(args.all)
     prob_dict = info.get_problem_dict()
 
     print('ID\t', 'Name')
     for prob_id in prob_dict.keys():
-        print(prob_id, '\t', prob_dict[prob_id])
+        print(prob_id, '\t', prob_dict[prob_id].replace("_", " "))
 
 def lcu_run(args):
 
@@ -42,7 +43,7 @@ def lcu_run(args):
 
     if prob_dict.get(args.id) is None:
         print('The ID is not added!')
-        print('Please display the problems with: ')
+        print('Please display the problems: ')
         print('./leetcode_unit list')
 
     else:
@@ -57,6 +58,25 @@ def lcu_run(args):
         os.system(run_problem)
         os.system(delete_output_file)
 
+def lcu_debug(args):
+
+    prob_dict = info.get_problem_dict()
+
+    if prob_dict.get(args.id) is None:
+        print('The ID is not added!')
+        print('Please display the problems: ')
+        print('./leetcode_unit list')
+
+    else:
+        input_file = file_format.test_file_format(args.id, prob_dict[args.id])
+        output_file = file_format.exec_file_format(args.id, prob_dict[args.id])
+
+        compile_problem = CC + '-g -o ' + output_file + ' ' + input_file + ' -l ' + LIB
+        debug_problem = 'gdb ' + output_file
+
+        os.system(compile_problem)
+        os.system(debug_problem)
+
 def lcu_delete(args):
 
     prob_dict = info.get_problem_dict()
@@ -67,6 +87,14 @@ def lcu_delete(args):
     else:
         problem_path = file_format.problem_path_format(args.id, prob_dict[args.id])
 
-        delete_problem = 'rm -rf ' + problem_path
+        print("This sub-command will delete Problem ", args.id, " .")
+        print("Input the ID of the problem to continue, or input others to stop")
+        input_id = input("ID: ")
 
-        os.system(delete_problem)
+        if(input_id == str(args.id)):
+            delete_problem = 'rm -rf ' + problem_path
+
+            os.system(delete_problem)
+            print("Successfully delete the problem.")
+        else:
+            print("Stop to delete the problem.")

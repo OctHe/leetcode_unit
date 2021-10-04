@@ -22,6 +22,7 @@ class Solution
 private:
     vector<int> res;
     vector< vector<int> > ret;
+
 public:
 
     void backtrack_sum(vector<int>& candidates, 
@@ -52,8 +53,7 @@ public:
     vector<vector<int>> combinationSum(vector<int>& candidates, int target)
     {
 
-            backtrack_sum(candidates, target, 0);
-
+        backtrack_sum(candidates, target, 0);
 
         return ret;
     }

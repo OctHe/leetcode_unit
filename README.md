@@ -30,28 +30,28 @@ Ideally, leetcode_unit can be used at other Linux platforms.
 
 ## Add New Problem
 
-The following content uses the [Problem 36](https://leetcode.com/problems/valid-sudoku/) as an example.
+The following content uses the [Problem 1](https://leetcode.com/problems/two-sum/) as an example.
 
 The program is a python program named as *leetcode_unit.py*.
 To add a new problem, you can directly run the following command
 
-    ./leetcode_unit add -i 36 -n Valid_Sudoku
+    ./leetcode_unit add -i 1 -n Two_Sum
+
 where *-i* is the index of the problem and *-n* is its name.
 
 After running the command, a new directory will be created in the *./problems/* directory like this:
 
     .   
     ├── problems    
-    │   ├── 36_Valid_Sudoku     
-    │   │   ├── 36_Valid_Sudoku.h   
-    │   │   └── Test_Cases_36.cc    
+    │   ├── 1_Two_Sum     
+    │   │   ├── 1_Two_Sum.h   
+    │   │   └── Test_Cases_1.cc    
 
 Until now, you can add your own solution to this new problem.
 
 ## Add Solution
 
-*36_Valid_Sudoku.h* contains the Solution class. Open it with a editor, you need to replace the following:
-
+*1_Two_Sum.h* contains Solution class. Open it with a editor, you need to replace the following contents:
 
     <return_type> <function>
     {
@@ -60,45 +60,35 @@ Until now, you can add your own solution to this new problem.
 
 by your solution, such as:
 
-
-    bool isValidSudoku(vector<vector<char>>& board) 
+    vector<int> twoSum(vector<int>& nums, int target) 
     {
-
-        vector< unordered_set<char> > rows(9, unordered_set<char>());
-        vector< unordered_set<char> > columns(9, unordered_set<char>());
-        vector< unordered_set<char> > boxes(9, unordered_set<char>());
-
-        for(unsigned i = 0; i < board.size(); i++)
-        for(unsigned j = 0; j < board[i].size(); j++)
+        vector<int> sum;
+        int result;
+        for(int i = 0; i < nums.size(); i++)
         {
-            if(board[i][j] == '.') continue;
-
-            if( rows[i].find(board[i][j]) != rows[i].end()) return false;
-
-            if( columns[j].find(board[i][j]) != columns[j].end() ) return false;
-
-            if( boxes[(i/3)*3+j/3].find(board[i][j]) != boxes[(i/3)*3+j/3].end()) return false;
-
-            rows[i].insert(board[i][j]);
-            columns[j].insert(board[i][j]);
-            boxes[(i/3)*3+j/3].insert(board[i][j]);
-
+            result = target - nums[i];
+            for(int j = i+1; j < nums.size(); j++)
+            {
+                if(result == nums[j])
+                {
+                    sum.push_back(i);
+                    sum.push_back(j);
+                }
+            }
         }
-
-        return true;
+        return sum;
     }
 
 ## Run Solution
 
 leetcode_unit provides a command to run the solution.
 
-    ./leetcode_unit.py run -i 36
+    ./leetcode_unit.py run -i 1
 
-This command will automatically compile (for C and C++) and run the program of [Problem 36](https://leetcode.com/problems/valid-sudoku/).
+This command will automatically compile (for C and C++) and run the program of [Problem 1](https://leetcode.com/problems/two-sum/).
 
 
 If the program has no error, you can see the output
-
 
     OK (1 tests)
 
@@ -106,39 +96,32 @@ Note that the results will be always OK because test cases have not been added.
 
 ## Add Test Cases
 
-Test cases for [Problem 36](https://leetcode.com/problems/valid-sudoku/) can be saved in file *Test_Cases_10.cc*.
-The following code can be added in *test_problem_36*function
+Test cases for [Problem 1](https://leetcode.com/problems/two-sum/) can be saved in file *Test_Cases_1.cc* like this
 
-    vector< vector<char> > true_input_board = 
+    void test_problem_1::test_case_1()
     {
-        {'5','3','.','.','7','.','.','.','.'},
-        {'6','.','.','1','9','5','.','.','.'},
-        {'.','9','8','.','.','.','.','6','.'},
-        {'8','.','.','.','6','.','.','.','3'},
-        {'4','.','.','8','.','3','.','.','1'},
-        {'7','.','.','.','2','.','.','.','6'},
-        {'.','6','.','.','.','.','2','8','.'},
-        {'.','.','.','4','1','9','.','.','5'},
-        {'.','.','.','.','8','.','.','7','9'}
-    };
+        // A simple assert: CPPUNIT_ASSERT
+    }
 
-    vector< vector<char> > false_input_board = 
+The following code can be added in the function
+
+    void test_problem_1::test_case_1()
     {
-        {'8','3','.','.','7','.','.','.','.'},
-        {'6','.','.','1','9','5','.','.','.'},
-        {'.','9','8','.','.','.','.','6','.'},
-        {'8','.','.','.','6','.','.','.','3'},
-        {'4','.','.','8','.','3','.','.','1'},
-        {'7','.','.','.','2','.','.','.','6'},
-        {'.','6','.','.','.','.','2','8','.'},
-        {'.','.','.','4','1','9','.','.','5'},
-        {'.','.','.','.','8','.','.','7','9'}
-    };
+        vector<int> input = {2, 7, 11, 15};
+        int target = 9;
+        
+        vector<int> output = {0, 1};
 
-    CPPUNIT_ASSERT( s->isValidSudoku(true_input_board) == true );
-    CPPUNIT_ASSERT( s->isValidSudoku(false_input_board) == false );
+        CPPUNIT_ASSERT(s->twoSum(input, target) == output);
+    }
 
 Compile and run it with
 
-    ./leetcode_unit.py run -i 36
+    ./leetcode_unit.py run -i 1
 
+## TODO List
+
+1. ``open'' sub-command (work with gvim)
+2. Time and space complexity of each problem
+3. python style ([Google python style](https://google.github.io/styleguide/pyguide.html))
+4. problem info in template

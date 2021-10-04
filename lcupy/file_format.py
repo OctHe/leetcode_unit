@@ -4,7 +4,7 @@ from . import info
 problem_dir_temp = Template('${index}_${problem}/')
 header_file_temp = Template('${index}_${problem}.h')
 source_file_temp = Template('Test_Cases_${index}.cc')
-exe_file_temp = Template('Test_Cases_${index}')
+exe_file_temp = Template('Test_Cases_${index}.o')
 
 
 def problem_path_format(problem_id, problem_name):
