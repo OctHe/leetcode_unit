@@ -7,6 +7,7 @@
 #include <vector>
 #include <unordered_set>
 #include <algorithm>
+#include <map>
 
 #include <cppunit/TestFixture.h>
 #include <cppunit/TestSuite.h>

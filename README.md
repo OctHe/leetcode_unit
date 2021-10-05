@@ -27,7 +27,9 @@ Ideally, leetcode_unit can be used at other Linux platforms.
     git clone https://github.com/OctHe/leetcode_unit
     cd leetcode_unit
 
-
+To begin with leetcode_unit, please use 
+    ./leetcode_unit --help
+    
 ## Add New Problem
 
 The following content uses the [Problem 1](https://leetcode.com/problems/two-sum/) as an example.

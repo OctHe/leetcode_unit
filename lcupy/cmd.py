@@ -67,11 +67,17 @@ def lcu_debug(args):
         print('Please display the problems: ')
         print('./leetcode_unit list')
 
-    else:
-        input_file = file_format.test_file_format(args.id, prob_dict[args.id])
-        output_file = file_format.exec_file_format(args.id, prob_dict[args.id])
+        return
 
-        compile_problem = CC + '-g -o ' + output_file + ' ' + input_file + ' -l ' + LIB
+    input_file = file_format.test_file_format(args.id, prob_dict[args.id])
+    output_file = file_format.exec_file_format(args.id, prob_dict[args.id])
+
+    if args.delete:
+        delete_output_file = 'rm ' + output_file
+        os.system(delete_output_file)
+
+    else:
+        compile_problem = CC + ' -g -o ' + output_file + ' ' + input_file + ' -l ' + LIB
         debug_problem = 'gdb ' + output_file
 
         os.system(compile_problem)
