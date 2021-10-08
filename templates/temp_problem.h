@@ -6,9 +6,11 @@
 #include <iostream>
 #include <climits>
 #include <vector>
-#include <unordered_set>
-#include <algorithm>
+#include <set>
 #include <map>
+#include <unordered_set>
+#include <unordered_map>
+#include <algorithm>
 
 #include <cppunit/TestFixture.h>
 #include <cppunit/TestSuite.h>
