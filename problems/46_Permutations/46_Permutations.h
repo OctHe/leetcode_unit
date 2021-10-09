@@ -1,6 +1,6 @@
 /*
  * Problem 46: Medium
- * Key words: Backtracking
+ * Key words: Backtrack
  * Link: https://leetcode.com/problems/permutations/
  */
 #include <iostream>
@@ -34,7 +34,7 @@ public:
             return;
         }
 
-        // Backtracking
+        // Backtrack
         for(unsigned i = 0; i < nums.size(); i++)
         {
             if(nums_index[i] == false)
