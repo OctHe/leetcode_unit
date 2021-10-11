@@ -1,12 +1,12 @@
-#include "${index}_${problem}.h"
+#include "98_Validate_Binary_Search_Tree.h"
 
-void test_problem_${index}::test_case_${index}()
+void test_problem_98::test_case_98()
 {
-    // vector<int> input = {};
-    // CPPUNIT_ASSERT
+    // Test cases for binary tree is not valid right now
+    // A simple assert: CPPUNIT_ASSERT
 }
 
-CPPUNIT_TEST_SUITE_REGISTRATION(test_problem_${index});
+CPPUNIT_TEST_SUITE_REGISTRATION(test_problem_98);
 
 int main( int argc, char **argv)
 {

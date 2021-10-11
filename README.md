@@ -1,17 +1,21 @@
 # leetcode_unit
 
-Customized test cases is also important in [Leetcode](https://leetcode.com/).
-
 *leetcode_unit* is a lightweight and offline tool to generate solutions and test cases for the problems in [Leetcode](https://leetcode.com/).
+*leetcode_unit* has the following features:
+1. Automatic generate template files for a new leetcode problem
+2. Add customized unit tests for each problem
+3. Compile and run any solution with one command.
+4. Debug the code with gdb with one command.
 
-## Support Platform
+## Prerequisites
 
 It has been tested on Ubuntu 20.04 and Windows Subsystem for Linux (WSL) v2.
 
-On Ubuntu 20.04 system, you need to install
-1. python 3
-1. make (>=4.2.1) and g++(>=8.3.0)
-2. cppunit (>=1.14.0)
+*leetcode_unit* has been tested based on following versions:
+1. python3 (>=3.8.10)
+2. make (>=4.2.1) and g++(>=8.3.0)
+3. cppunit (>=1.14.0)
+4. gdb (>=9.2)
 
 you can install them using *apt*
     
@@ -27,9 +31,11 @@ Ideally, leetcode_unit can be used at other Linux platforms.
     git clone https://github.com/OctHe/leetcode_unit
     cd leetcode_unit
 
-To begin with leetcode_unit, please use 
+To begin with leetcode_unit, please read the usage with 
     ./leetcode_unit --help
-    
+or
+    ./leetcode_unit -h
+
 ## Add New Problem
 
 The following content uses the [Problem 1](https://leetcode.com/problems/two-sum/) as an example.
@@ -127,3 +133,4 @@ Compile and run it with
 2. Time and space complexity of each problem
 3. python style ([Google python style](https://google.github.io/styleguide/pyguide.html))
 4. problem info in template
+5. Helper data structures for unit tests of list and binary tree

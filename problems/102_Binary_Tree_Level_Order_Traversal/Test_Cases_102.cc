@@ -1,12 +1,11 @@
-#include "${index}_${problem}.h"
+#include "102_Binary_Tree_Level_Order_Traversal.h"
 
-void test_problem_${index}::test_case_${index}()
+void test_problem_102::test_case_102()
 {
-    // vector<int> input = {};
-    // CPPUNIT_ASSERT
+    // Test cases is not ready
 }
 
-CPPUNIT_TEST_SUITE_REGISTRATION(test_problem_${index});
+CPPUNIT_TEST_SUITE_REGISTRATION(test_problem_102);
 
 int main( int argc, char **argv)
 {

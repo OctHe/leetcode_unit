@@ -1,12 +1,11 @@
-#include "${index}_${problem}.h"
+#include "43_Multiply_Strings.h"
 
-void test_problem_${index}::test_case_${index}()
+void test_problem_43::test_case_43()
 {
-    // vector<int> input = {};
-    // CPPUNIT_ASSERT
+    CPPUNIT_ASSERT(s->multiply("123", "456") == "56088");
 }
 
-CPPUNIT_TEST_SUITE_REGISTRATION(test_problem_${index});
+CPPUNIT_TEST_SUITE_REGISTRATION(test_problem_43);
 
 int main( int argc, char **argv)
 {

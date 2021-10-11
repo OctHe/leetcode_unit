@@ -1,12 +1,11 @@
-#include "${index}_${problem}.h"
+#include "96_Unique_Binary_Search_Trees.h"
 
-void test_problem_${index}::test_case_${index}()
+void test_problem_96::test_case_96()
 {
-    // vector<int> input = {};
-    // CPPUNIT_ASSERT
+    CPPUNIT_ASSERT(s->numTrees(3) == 5);
 }
 
-CPPUNIT_TEST_SUITE_REGISTRATION(test_problem_${index});
+CPPUNIT_TEST_SUITE_REGISTRATION(test_problem_96);
 
 int main( int argc, char **argv)
 {
