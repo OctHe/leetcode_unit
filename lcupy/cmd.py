@@ -30,12 +30,17 @@ def lcu_add(args):
 
 def lcu_list(args):
 
-    print(args.all)
     prob_dict = info.get_problem_dict()
 
-    print('ID\t', 'Name')
-    for prob_id in prob_dict.keys():
-        print(prob_id, '\t', prob_dict[prob_id].replace("_", " "))
+    print('leetcode_unit records', len(prob_dict), 'probelms.')
+    print('Do you want to list all problems? ')
+
+    want = input('Enter "yes" or "y" if you want, or others if you don\'t: ')
+    
+    if(want == 'yes' or want == 'y' or want == 'Y'):
+        print('ID\t', 'Name')
+        for prob_id in prob_dict.keys():
+            print(prob_id, '\t', prob_dict[prob_id].replace("_", " "))
 
 def lcu_run(args):
 

@@ -34,6 +34,7 @@ public:
             // candidate saves the maximum sum from nums[i] to nums[i];
             candidate = max(candidate + nums[i], nums[i]);
 
+            // max_value saves the maximum sum of nums[0: i]
             max_value = max(max_value, candidate);
         }
 
