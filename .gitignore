@@ -4,11 +4,11 @@
 *~
 .*
 !.gitignore
+!leetcode_unit
 
 # Build and tag files
 build
 tags
-leetcode_unit
 
 # pyc files
 *.pyc
