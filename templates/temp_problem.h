@@ -1,7 +1,9 @@
 /*
- * Problem ${index}: Easy/Medium/Hard
- * Key words:
- * Link: 
+ * Problem ${index}: [Easy/Medium/Hard]
+ * Description: [Description of the problem]
+ * Ideas: [Some words about the solution]
+ * Visualization: [Something easy to understand]
+ * Link: [Link from Leetcode]
  */
 #include <iostream>
 #include <climits>
