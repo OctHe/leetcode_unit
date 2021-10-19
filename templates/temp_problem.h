@@ -2,12 +2,14 @@
  * Problem ${index}: [Easy/Medium/Hard]
  * Description: [Description of the problem]
  * Ideas: [Some words about the solution]
- * Visualization: [Something easy to understand]
+ * Algorithm: [Flow graph of the solution]
  * Link: [Link from Leetcode]
  */
 #include <iostream>
+#include <cmath>
 #include <climits>
 #include <vector>
+#include <queue>
 #include <set>
 #include <map>
 #include <unordered_set>

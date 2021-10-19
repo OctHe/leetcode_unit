@@ -1,11 +1,17 @@
 /*
  * Problem 56: Medium
- * Key words: Compare in sort; lambda expression
+ * Description: Given an array of intervals where intervals[i] = [start_i, end_i], merge all overlapping 
+ *              intervals, and return an array of the non-overlapping intervals that cover all the 
+ *              intervals in the input.
+ * Ideas: 
+ * Algorithm: [Flow graph of the solution]
  * Link: https://leetcode.com/problems/merge-intervals/
  */
 #include <iostream>
+#include <cmath>
 #include <climits>
 #include <vector>
+#include <queue>
 #include <set>
 #include <map>
 #include <unordered_set>
@@ -18,6 +24,7 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/ui/text/TestRunner.h>
 
+
 using namespace std;
 
 class Solution 
@@ -25,7 +32,7 @@ class Solution
 
 public:
 
-    vector<vector<int>> merge(vector<vector<int>>& intervals)
+    vector<vector<int>> sort_and_merge(vector<vector<int>>& intervals)
     {
         vector< vector<int> > merged_intervals;
 
@@ -49,6 +56,11 @@ public:
         }
 
         return merged_intervals;
+    }
+
+    vector<vector<int>> merge(vector<vector<int>>& intervals)
+    {
+        return sort_and_merge(intervals);
     }
     
 };
