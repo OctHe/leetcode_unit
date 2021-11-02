@@ -3,6 +3,7 @@ import os
 from . import file_format
 from . import info
 
+CFLAG = '-fsanitize=address'
 CC = 'g++'
 LIB = 'cppunit'
 
@@ -55,7 +56,7 @@ def lcu_run(args):
         input_file = file_format.test_file_format(args.id, prob_dict[args.id])
         output_file = file_format.exec_file_format(args.id, prob_dict[args.id])
 
-        compile_problem = CC + ' -o ' + output_file + ' ' + input_file + ' -l ' + LIB
+        compile_problem = CC + ' ' + CFLAG + ' -o ' + output_file + ' ' + input_file + ' -l ' + LIB
         run_problem = output_file
         delete_output_file = 'rm ' + output_file
 
@@ -82,7 +83,7 @@ def lcu_debug(args):
         os.system(delete_output_file)
 
     else:
-        compile_problem = CC + ' -g -o ' + output_file + ' ' + input_file + ' -l ' + LIB
+        compile_problem = CC + ' -g ' + CFLAG + ' -o ' + output_file + ' ' + input_file + ' -l ' + LIB
         debug_problem = 'gdb ' + output_file
 
         os.system(compile_problem)
